@@ -2,7 +2,7 @@
     "name": "digitales/laravel-mondo",
     "description": "An unofficial Mondo API client for Laravel",
     "require": {
-        "guzzlehttp/guzzle": "^6.1",
+        "guzzlehttp/guzzle": "^6.1"
     },
     "license": "MIT",
     "autoload": {
