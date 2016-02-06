@@ -1,13 +1,20 @@
 {
     "name": "digitales/laravel-mondo",
     "description": "An unofficial Mondo API client for Laravel",
+    "authors": [
+        {
+            "name": "Ross Tweedie",
+            "email": "r.tweedie@gmail.com"
+        }
+    ],
     "require": {
+        "php": ">=5.4.0",
         "guzzlehttp/guzzle": "^6.1"
     },
     "license": "MIT",
     "autoload": {
-        "psr-0": {
-            "LaravelMondo\\": "src/"
+        "psr-4": {
+            "Digitales\\LaravelMondo\\": "src/"
         }
     }
 }
