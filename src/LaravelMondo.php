@@ -1,6 +1,6 @@
 <?php
 
-namespace Digitales;
+namespace Digitales\LaravelMondo;
 
 use GuzzleHttp\ClientInterface;
 
