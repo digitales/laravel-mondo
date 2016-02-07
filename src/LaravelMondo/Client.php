@@ -10,7 +10,7 @@ use Digitales\LaravelMondo\Api\Transaction;
 use Digitales\LaravelMondo\Api\Webhook;
 use Digitales\LaravelMondo\Api\Feed;
 
-class LaravelMondo extends AbstractProvider
+class Client extends AbstractProvider
 {
     /**
      * The separating character for the requested scopes.
