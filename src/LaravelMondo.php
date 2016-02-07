@@ -1,6 +1,6 @@
 <?php
 
-namespace Digitales\LaravelMondo\Client;
+namespace Digitales\LaravelMondo;
 
 use GuzzleHttp\ClientInterface;
 
@@ -10,7 +10,7 @@ use Digitales\LaravelMondo\Api\Transaction;
 use Digitales\LaravelMondo\Api\Webhook;
 use Digitales\LaravelMondo\Api\Feed;
 
-class Client extends AbstractProvider
+class LaravelMondo extends AbstractProvider
 {
     /**
      * The separating character for the requested scopes.
