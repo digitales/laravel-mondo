@@ -93,6 +93,17 @@ class LaravelMondo extends AbstractProvider
     }
     
     
+    public function setToken( $token )
+    {
+        $this->token = $token;
+    }
+    
+    public function setRefreshToken( $refreshToken )
+    {
+        $this->refreshToken = $refreshToken;
+    }
+    
+    
     /**
      * Transaction methods
      *
@@ -105,9 +116,10 @@ class LaravelMondo extends AbstractProvider
     public function transaction( $token = null, $refreshToken = null, $client = null)
     {
         $userToken = (!$token) ? $this->token : $token;
+        $userToken = (!$token) ? $this->token : $token;
+        $userClient = (!$client) ? $this->client : $client;
         
-        
-        return Transaction( $token, $refreshToken, $client );    
+        return Transaction( $userToken, $userRefreshToken, $userClient );    
     }
     
     
