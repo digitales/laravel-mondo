@@ -12,6 +12,6 @@ class Feed extends Client
     {
         $payload['account_id'] = $accountId;
         
-        return $this->post( $this->apiUrl, $payload );   
+        return $this->postAction( $this->apiUrl, $payload );   
     }    
 }

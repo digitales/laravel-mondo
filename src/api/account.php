@@ -10,19 +10,19 @@ class Account extends Client
     
     
     public function get( $accountId = null )
-    {
-        return $this->get( $this->apiBaseUrl.'/accounts', ['account' => $account] );   
+    {    
+        return $this->getAction( $this->apiBaseUrl.'/accounts', ['account' => $account] );   
     }
     
-    public function whoami()
+    public function whoAmI()
     {
-        return $this->get( $this->apiBaseUrl.'/ping/whoami');
+        return $this->getAction( $this->apiBaseUrl.'/ping/whoami');
     }
     
     
     public function balance( $accountId )
     {
-        return $this->get( $this->apiBaseUrl.'/balance', ['account_id' => $accountId] ); 
+        return $this->getAction( $this->apiBaseUrl.'/balance', ['account_id' => $accountId] ); 
     }
     
 }

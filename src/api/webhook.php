@@ -8,11 +8,11 @@ class Webhook extends Client
 {
     protected $apiUrl = 'https://api.getmondo.co.uk/webhooks';
 
-    public function create( $accountId, $webhookUrl )
+    public function createAction( $accountId, $webhookUrl )
     {
         $payload = [ 'account_id' => $accountId, 'url' => $webhookUrl ];
         
-        return $this->post( $this->apiUrl, $payload );   
+        return $this->postAction( $this->apiUrl, $payload );   
     }
     
     public function getList( $accountId )
@@ -22,7 +22,7 @@ class Webhook extends Client
     
     public function remove( $webhookId )
     {
-        return $this->delete( $this->apiUrl.'/'.$webhookId ); 
+        return $this->deleteAction( $this->apiUrl.'/'.$webhookId ); 
     }
     
 }

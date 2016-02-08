@@ -68,7 +68,7 @@ class Client {
     
     
     
-    public function get( $requestUrl, $payload = null, $token = null )
+    public function getAction( $requestUrl, $payload = null, $token = null )
     {        
         $response = $this->getHttpClient()->get( $requestUrl, [
             'query' => [
@@ -82,25 +82,25 @@ class Client {
     
     
     
-    public function post( $requestUrl, $payload )
+    public function postAction( $requestUrl, $payload )
     {
         $headers = $this->assembleHeaders();
         
     }
     
-    public function delete( $requestUrl, $payload )
+    public function deleteAction( $requestUrl, $payload )
     {
         $headers = $this->assembleHeaders();
         
     }
     
-    public function put( $requestUrl, $payload )
+    public function putAction( $requestUrl, $payload )
     {
         $headers = $this->assembleHeaders();
         
     }
     
-    public function patch( $requestUrl, $payload )
+    public function patchAction( $requestUrl, $payload )
     {
         $headers = $this->assembleHeaders();
         
