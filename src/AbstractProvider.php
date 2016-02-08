@@ -29,6 +29,14 @@ abstract class AbstractProvider implements ProviderContract
     
     
     /**
+     * The API client to use
+     * 
+     * @var object || null
+     */
+    protected $client;
+    
+    
+    /**
      * The HTTP request instance.
      *
      * @var Request
