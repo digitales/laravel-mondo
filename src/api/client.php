@@ -3,7 +3,7 @@ namespace Digitales\LaravelMondo\Api;
 
 use GuzzleHttp\ClientInterface;
 
-class client {
+class Client {
     
     protected $HttpClient;
     
