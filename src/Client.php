@@ -119,7 +119,7 @@ class Client extends AbstractProvider
         $userRefreshToken = (!$refreshToken) ? $this->refreshToken : $refreshToken;
         $userClient = (!$client) ? $this->client : $client;
         
-        return  newTransaction( $userToken, $userRefreshToken, $userClient );    
+        return  new Transaction( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret );    
     }
     
     
@@ -134,11 +134,11 @@ class Client extends AbstractProvider
      */
     public function account( $token = null, $refreshToken = null, $client = null )
     {
-	$userToken = (!$token) ? $this->token : $token;
+        $userToken = (!$token) ? $this->token : $token;
         $userRefreshToken = (!$refreshToken) ? $this->refreshToken : $refreshToken;
         $userClient = (!$client) ? $this->client : $client;
         
-        return new Account( $userToken, $userRefreshToken, $userClient);
+        return new Account( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret);
     }
     
     /**
@@ -156,7 +156,7 @@ class Client extends AbstractProvider
         $userRefreshToken = (!$refreshToken) ? $this->refreshToken : $refreshToken;
         $userClient = (!$client) ? $this->client : $client;
         
-        return new Webhook( $userToken, $userRefreshToken, $userClient);
+        return new Webhook( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret);
     }
 
     
@@ -175,7 +175,7 @@ class Client extends AbstractProvider
         $userRefreshToken = (!$refreshToken) ? $this->refreshToken : $refreshToken;
         $userClient = (!$client) ? $this->client : $client;
         
-        return new Feed( $userToken, $userRefreshToken, $userClient );
+        return new Feed( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret );
     }
     
     

@@ -15,17 +15,24 @@ class Client {
     
     protected $apiUrl;
     
-    public function __construct( $token = null, $refreshToken, $client = null )
+    protected $clientId;
+    
+    protected $clientSecret;
+    
+    public function __construct( $token = null, $refreshToken, $client = null, $clientId = null, $clientSecret = null )
     {
         $this->token = $token;
         $this->refreshToken = $refreshToken;
-        $this->httpClient = $client;    
+        $this->httpClient = $client;
+        
+        $this->setClientId( $clientId );
+        $this->setClientSecret( $clientSecret );
     }
     
     
     public function setApiUrl( $url )
     {
-        $this->apiUrl;
+        $this->apiUrl = $url;
         return $this;
     }
     
@@ -33,6 +40,30 @@ class Client {
     public function getApiUrl()
     {
         return $this->apiUrl;
+    }
+    
+    public function setClientId( $clientId )
+    {
+        $this->clientId = $clientId;
+        return $this;
+    }
+    
+    
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+    
+    public function setClientSecret( $clientSecret )
+    {
+        $this->clientSecret = $clientSecret;
+        return $this;
+    }
+    
+    
+    public function getClientSecret()
+    {
+        return $this->clientSecret;
     }
     
     
@@ -53,11 +84,18 @@ class Client {
     }
     
     
-    protected function assembleHeaders()
+    protected function assembleHeaders( $excludeAuth = false )
     {
-        return ['Accept' => 'application/json',
-                'Authorization' => 'Bearer '.$this->getToken(),
-               ];
+        $headers =  [
+                        'Accept' => 'application/json',
+                        'Authorization' => 'Bearer '.$this->getToken(),
+                    ];
+        
+        if (true == $excludeAuth){
+            unset($headers['Authorization']);
+        }
+        
+        return $headers;
     }
     
     
@@ -69,12 +107,18 @@ class Client {
     
     
     public function getAction( $requestUrl, $payload = null, $token = null )
-    {        
+    {
+        $postKey = (version_compare(ClientInterface::VERSION, '6') === 1) ? 'form_params' : 'body';
+        
+        $query = null;
+        
+        if (isset($payload) ){
+            $query = $payload;
+        }
+        
         $response = $this->getHttpClient()->get( $requestUrl, [
-            'query' => [
-                'prettyPrint' => 'false',
-            ],
             'headers' => $this->assembleHeaders(),
+            'query' => $query,
         ]);
 
         return json_decode($response->getBody(), true);
@@ -82,11 +126,20 @@ class Client {
     
     
     
-    public function postAction( $requestUrl, $payload )
+    public function postAction( $requestUrl, $payload, $excludeAuthorization = false )
     {
-        $headers = $this->assembleHeaders();
+        $headers = $this->assembleHeaders($excludeAuthorization);
+
+        $postKey = (version_compare(ClientInterface::VERSION, '6') === 1) ? 'form_params' : 'body';
         
+        $response = $this->getHttpClient()->post($requestUrl, [
+            'headers' => $headers,
+            $postKey => $payload,
+        ]);
+    
+        return json_decode($response->getBody(), true );    
     }
+    
     
     public function deleteAction( $requestUrl, $payload )
     {
