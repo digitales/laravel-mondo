@@ -10,7 +10,7 @@ class Transaction extends Client
     
     public function get( $transactionId = null )
     {
-        return $this->getAction( $this->apiUrl.'/'.$transactionId );   
+        return $this->getAction( $this->apiUrl.'/'.$transactionId, ['expand[]' => 'merchant']  );   
     }
     
     
