@@ -9,6 +9,7 @@ use Digitales\LaravelMondo\Api\Account;
 use Digitales\LaravelMondo\Api\Transaction;
 use Digitales\LaravelMondo\Api\Webhook;
 use Digitales\LaravelMondo\Api\Feed;
+use Digitales\LaravelMondo\Api\Attachement;
 
 class Client extends AbstractProvider
 {
@@ -176,6 +177,25 @@ class Client extends AbstractProvider
         $userClient = (!$client) ? $this->client : $client;
         
         return new Feed( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret );
+    }
+    
+    
+    /**
+     * Feed methods
+     *
+     * @param string $token || null The user's authentication token
+     * @param string $refreshToken || null The user's authentication refresh token
+     * @param $client || null
+     *
+     * @return object Digitales\LaravelMondo\Api\Attachment
+     */
+    public function attachment( $token = null, $refreshToken = null, $client = null )
+    {
+    	$userToken = (!$token) ? $this->token : $token;
+        $userRefreshToken = (!$refreshToken) ? $this->refreshToken : $refreshToken;
+        $userClient = (!$client) ? $this->client : $client;
+        
+        return new Attachment( $userToken, $userRefreshToken, $userClient, $this->clientId, $this->clientSecret );
     }
     
     
