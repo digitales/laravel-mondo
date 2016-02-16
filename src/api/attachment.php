@@ -19,7 +19,7 @@ class Attachment extends Client
 	{
 		$payload = [ 'file' => $filePath ];
 		
-		return $this->postAction( $uploadUrl, $payload );
+		return $this->postAction( $uploadUrl, $payload, true );
 	}
 	
 	
