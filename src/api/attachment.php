@@ -15,12 +15,13 @@ class Attachment extends Client
 	}
 	
 	
-	public function upload( $fileName, $fileType )
+	public function uploadFile( $uploadUrl, $filePath )
 	{
-		$payload = [ 'file_name' => $fileName, 'file_type' => $fileType ];
+		$payload = [ 'file' => $filePath ];
 		
-		return $this->postAction( $this->apiUrl.'/upload', $payload );
+		return $this->postAction( $uploadUrl, $payload );
 	}
+	
 	
 	public function register( $transactionId, $fileUrl, $fileType )
 	{
