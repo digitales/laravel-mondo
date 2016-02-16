@@ -9,7 +9,7 @@ use Digitales\LaravelMondo\Api\Account;
 use Digitales\LaravelMondo\Api\Transaction;
 use Digitales\LaravelMondo\Api\Webhook;
 use Digitales\LaravelMondo\Api\Feed;
-use Digitales\LaravelMondo\Api\Attachement;
+use Digitales\LaravelMondo\Api\Attachment;
 
 class Client extends AbstractProvider
 {
